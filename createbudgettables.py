@@ -28,6 +28,11 @@ def loadProjectData(data):
     fillTables(inc,minc,projectCount)
     projectCount+=1
 
+def fillOutTable(dst):
+    for name in dst.keys():
+        while(len(dst[name])<projectCount):
+            dst[name].append('0')
+
 def csvOutput():
     f = codecs.open("budget.csv",'w','utf-8')
     f.write(u',"'+u'","'.join(master["projects"])+'"\n')
@@ -45,5 +50,7 @@ if __name__ == "__main__":
         loadProjectData(data)
         h.close()
     f.close()
+    fillOutTable(master["income"])
+    fillOutTable(master["expenses"])
     #print master
     csvOutput()
