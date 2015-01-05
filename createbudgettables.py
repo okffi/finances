@@ -45,7 +45,7 @@ def csvOutput():
 if __name__ == "__main__":
     f = open("holvilist.txt")
     for holvi in f:
-        h = open(holvi.strip()+'.json')
+        h = open(holvi.strip().split("#")[0]+'.json')
         data = json.load(h)
         loadProjectData(data)
         h.close()
